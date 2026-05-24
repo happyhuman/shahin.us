@@ -1,26 +1,427 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body {
+  height: 100%;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Palette Variables */
+
+/* 1. Aurora (Default Dark Glass) */
+[data-palette="aurora"] {
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #060913;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --bg-header: rgba(10, 14, 26, 0.85);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color-active: rgba(99, 102, 241, 0.4);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --color-primary: #6366f1; /* Indigo */
+  --color-secondary: #3b82f6; /* Blue */
+  --color-accent: #10b981; /* Emerald */
+  --glow-color: rgba(99, 102, 241, 0.15);
+  --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --bg-backdrop: blur(16px);
 }
 
+/* 2. Cyberpunk Glow (Dark Neon) */
+[data-palette="cyberpunk"] {
+  --bg-primary: #07050f;
+  --bg-secondary: #030207;
+  --bg-card: rgba(26, 21, 44, 0.5);
+  --bg-card-hover: rgba(38, 30, 64, 0.7);
+  --bg-header: rgba(7, 5, 15, 0.85);
+  --border-color: rgba(255, 0, 127, 0.15);
+  --border-color-active: rgba(0, 240, 255, 0.5);
+  --text-primary: #f5f2fc;
+  --text-secondary: #a59ebc;
+  --color-primary: #ff007f; /* Neon Pink */
+  --color-secondary: #00f0ff; /* Neon Cyan */
+  --color-accent: #9d4edd; /* Purple */
+  --glow-color: rgba(255, 0, 127, 0.2);
+  --shadow-main: 0 0 25px rgba(255, 0, 127, 0.1);
+  --bg-backdrop: blur(12px);
+}
+
+/* 3. Emerald Mint (Deep Green) */
+[data-palette="mint"] {
+  --bg-primary: #040d0a;
+  --bg-secondary: #020605;
+  --bg-card: rgba(16, 185, 129, 0.04);
+  --bg-card-hover: rgba(16, 185, 129, 0.08);
+  --bg-header: rgba(4, 13, 10, 0.85);
+  --border-color: rgba(16, 185, 129, 0.15);
+  --border-color-active: rgba(52, 211, 153, 0.5);
+  --text-primary: #ecfdf5;
+  --text-secondary: #8fa89b;
+  --color-primary: #10b981; /* Emerald */
+  --color-secondary: #34d399; /* Mint */
+  --color-accent: #f59e0b; /* Amber */
+  --glow-color: rgba(16, 185, 129, 0.15);
+  --shadow-main: 0 8px 32px 0 rgba(0, 15, 10, 0.4);
+  --bg-backdrop: blur(16px);
+}
+
+/* 4. Sunset Glow (Warm Dark) */
+[data-palette="sunset"] {
+  --bg-primary: #0f0a0a;
+  --bg-secondary: #080505;
+  --bg-card: rgba(249, 115, 22, 0.04);
+  --bg-card-hover: rgba(249, 115, 22, 0.08);
+  --bg-header: rgba(15, 10, 10, 0.85);
+  --border-color: rgba(249, 115, 22, 0.15);
+  --border-color-active: rgba(239, 68, 68, 0.5);
+  --text-primary: #fffaf9;
+  --text-secondary: #d6c3bf;
+  --color-primary: #f97316; /* Orange */
+  --color-secondary: #ef4444; /* Red */
+  --color-accent: #eab308; /* Yellow */
+  --glow-color: rgba(249, 115, 22, 0.15);
+  --shadow-main: 0 8px 32px 0 rgba(20, 0, 0, 0.4);
+  --bg-backdrop: blur(16px);
+}
+
+/* 5. Slate Minimalism (Clean Light) */
+[data-palette="minimal"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-header: rgba(248, 250, 252, 0.85);
+  --border-color: #e2e8f0;
+  --border-color-active: #64748b;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --color-primary: #0f172a; /* Slate */
+  --color-secondary: #475569; /* Gray */
+  --color-accent: #3b82f6; /* Blue */
+  --glow-color: rgba(15, 23, 42, 0.05);
+  --shadow-main: 0 4px 20px 0 rgba(15, 23, 42, 0.05);
+  --bg-backdrop: none;
+}
+
+/* Default state applying variable maps */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Background Variations */
+.app-bg-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Background Styles */
+
+/* 1. Mesh Gradient (Dynamic Aurora Overlay) */
+[data-background="mesh"] .app-bg-wrapper {
+  background: var(--bg-primary);
+}
+[data-background="mesh"] .app-bg-wrapper::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    radial-gradient(circle at 30% 30%, var(--glow-color) 0%, transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(99, 102, 241, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 50% 40%, rgba(0, 240, 255, 0.05) 0%, transparent 35%);
+  filter: blur(80px);
+  animation: bgRotate 60s infinite linear;
+}
+
+/* 2. Grid Style */
+[data-background="grid"] .app-bg-wrapper {
+  background: var(--bg-primary);
+  background-image: 
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+}
+[data-background="grid"] .app-bg-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, transparent 20%, var(--bg-primary) 90%);
+}
+
+/* 3. Subtle Dot Pattern / Minimal Clean */
+[data-background="dots"] .app-bg-wrapper {
+  background: var(--bg-primary);
+  background-image: radial-gradient(var(--border-color) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+@keyframes bgRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Typography & Layout Utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Premium Layout Core Components */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header & Navigation */
+.header {
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-header);
+  backdrop-filter: var(--bg-backdrop);
+  -webkit-backdrop-filter: var(--bg-backdrop);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: border 0.3s ease;
+}
+
+.nav-container {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-link {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-primary);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+/* Main Layout */
+.main-content {
+  flex: 1;
+  padding: 48px 0;
+}
+
+/* Card Component */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: var(--bg-backdrop);
+  -webkit-backdrop-filter: var(--bg-backdrop);
+  box-shadow: var(--shadow-main);
+  transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-color-active);
+  transform: translateY(-2px);
+  background: var(--bg-card-hover);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--glow-color);
+  opacity: 0.95;
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-color-active);
+  background: var(--bg-card-hover);
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--glow-color);
+}
+
+/* Responsive Grid layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding: 32px 0;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    height: auto;
+    padding: 16px 0;
+    gap: 16px;
+  }
+  .nav-links {
+    gap: 20px;
+  }
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+  }
 }

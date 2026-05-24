@@ -1,65 +1,57 @@
-import Image from "next/image";
+import React from "react";
+import styles from "./home.module.css";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className={styles.homeGrid}>
+      {/* Left Column: Image & QR Code */}
+      <div className={styles.leftCol}>
+        
+        {/* Profile Details Card */}
+        <div className={styles.profileCard}>
+          <div className={styles.profileImgWrapper}>
+            <img 
+              src="/profile.png" 
+              alt="Shahin" 
+              className={styles.profileImg} 
+            />
+          </div>
+          <h2 className={styles.profileName}>Shahin</h2>
+        </div>
+
+        {/* Email QR Code Card */}
+        <div className={styles.qrCard}>
+          <h3 className={styles.qrTitle}>Get in Touch</h3>
+          <div className={styles.qrWrapper}>
+            <img 
+              src="/email-qr.svg" 
+              alt="Scan to email me" 
+              className={styles.qrImg} 
+            />
+          </div>
+          <span className={styles.qrLabel}>Scan to Email Me</span>
+        </div>
+
+      </div>
+
+      {/* Right Column: Biography content */}
+      <div className={styles.rightCol}>
+        <div className={styles.bioCard}>
+          <h2 className={styles.bioHeading}>About Me</h2>
+          
+          <p className={styles.bioParagraph}>
+            Born in Iran and now based in the San Francisco Bay Area, my career and life have been shaped by a lifelong fascination with structure, patterns, and logic. My academic foundation bridges the gap between theoretical foundations and practical application: I hold a Bachelor’s degree in Computer Science, a Master of Science in Mathematics, and spent time pursuing a PhD in Logic at UC Berkeley. That core drive to solve complex puzzles is the thread that connects everything I do.
+          </p>
+
+          <p className={styles.bioParagraph}>
+            I have been building software since 2000, navigating the evolving tech landscape across several organizations—including an impactful 11-year chapter at SRI International. In 2017, I joined Google, where I continue to solve large-scale engineering problems. Because I believe the best way to honor what you love is to share it, I also step into the classroom part-time to teach discrete mathematics at a local community college.
+          </p>
+
+          <p className={styles.bioParagraph}>
+            When I’m not writing code or analyzing equations, you can usually find me seeking out new strategic challenges or unwinding with classic interests. Outdoors, I’m typically hiking, camping, or playing soccer. Indoors, I dive into chess matches, tackle deep math puzzles, watch movies, or immerse myself in the rich, timeless depth of Persian poetry.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }
