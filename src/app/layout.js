@@ -1,6 +1,7 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { siteConfig } from "@/config";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export default function RootLayout({ children }) {
         <header className="header">
           <div className="container nav-container">
             <Link href="/" className="logo">
-              shahin.us
+              {siteConfig.logoText}
             </Link>
             <nav>
               <ul className="nav-links">

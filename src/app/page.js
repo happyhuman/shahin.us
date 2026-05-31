@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./home.module.css";
+import { siteConfig } from "@/config";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
               className={styles.profileImg} 
             />
           </div>
-          <h2 className={styles.profileName}>Shahin</h2>
+          <p className={styles.profileTagline}>{siteConfig.profileTagline}</p>
         </div>
 
         {/* Email QR Code Card */}
