@@ -211,7 +211,7 @@ function MoviesCard() {
       </div>
 
       <div style={{ fontSize: "0.75rem", fontWeight: "700", color: "var(--text-secondary)", marginBottom: "8px", zIndex: 2, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-        Absolute Favorites (a few examples):
+        A few of my favorites:
       </div>
 
       <div className={styles.moviesList}>
