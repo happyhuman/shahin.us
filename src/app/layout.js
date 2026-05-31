@@ -53,6 +53,11 @@ export default function RootLayout({ children }) {
                     Math
                   </Link>
                 </li>
+                <li>
+                  <Link href="/interests" className="nav-link">
+                    Interests
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>
