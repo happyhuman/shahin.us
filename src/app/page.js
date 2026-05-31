@@ -20,17 +20,17 @@ export default function Home() {
           <p className={styles.profileTagline}>{siteConfig.profileTagline}</p>
         </div>
 
-        {/* Email QR Code Card */}
+        {/* QR Code Card */}
         <div className={styles.qrCard}>
-          <h3 className={styles.qrTitle}>Get in Touch</h3>
+          <h3 className={styles.qrTitle}>{siteConfig.qrCode.title}</h3>
           <div className={styles.qrWrapper}>
             <img 
-              src="/email-qr.svg" 
-              alt="Scan to email me" 
+              src={siteConfig.qrCode.imagePath} 
+              alt={siteConfig.qrCode.label} 
               className={styles.qrImg} 
             />
           </div>
-          <span className={styles.qrLabel}>Scan to Email Me</span>
+          <span className={styles.qrLabel}>{siteConfig.qrCode.label}</span>
         </div>
 
       </div>
