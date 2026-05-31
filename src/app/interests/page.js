@@ -43,7 +43,7 @@ function ChessCard() {
 
     async function fetchChessStats() {
       try {
-        const res = await fetch("https://api.chess.com/pub/player/happyhuman/stats", {
+        const res = await fetch(`https://api.chess.com/pub/player/${siteConfig.interests.chess.username}/stats`, {
           headers: {
             // Chess.com requests a User-Agent or contact email for public scripts
             "User-Agent": "shahin.us-personal-site-contact",
@@ -157,7 +157,7 @@ function ChessCard() {
 
       <div className={styles.cardFooter}>
         <a
-          href="https://www.chess.com/member/happyhuman"
+          href={siteConfig.interests.chess.profileUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-secondary"
