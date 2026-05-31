@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./interests.module.css";
+import { siteConfig } from "@/config";
 
 export default function InterestsPage() {
   return (
@@ -16,6 +17,9 @@ export default function InterestsPage() {
       <div className={styles.interestsGrid}>
         {/* Chess Card */}
         <ChessCard />
+
+        {/* Movies Card */}
+        <MoviesCard />
       </div>
     </div>
   );
@@ -160,6 +164,61 @@ function ChessCard() {
           style={{ textDecoration: "none", width: "100%" }}
         >
           View chess.com Profile &rarr;
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function MoviesCard() {
+  const { movies } = siteConfig.interests;
+
+  return (
+    <section className={`card ${styles.moviesCard}`}>
+      <div className={styles.moviesBackground} />
+
+      <div className={styles.cardHeader}>
+        <h3 className={styles.cardHeading}>🎬 Movies</h3>
+        <span className={styles.cardBadge}>Cinema</span>
+      </div>
+
+      <p className={styles.chessDescription}>
+        A lifelong appreciation for cinema and visual storytelling. I track my viewing log and curate playlists of my favorite films on Letterboxd.
+      </p>
+
+      <div className={styles.moviesStatsBanner}>
+        <span className={styles.moviesStatsText}>Films Logged</span>
+        <span className={styles.moviesStatsCount}>{movies.totalWatched}</span>
+      </div>
+
+      <div className={styles.moviesList}>
+        {movies.favorites.map((movie, idx) => (
+          <a
+            key={idx}
+            href={movie.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.movieItem}
+            title="View on Letterboxd"
+          >
+            <div className={styles.movieInfo}>
+              <span className={styles.movieTitle}>{movie.title}</span>
+              <span className={styles.movieYear}>{movie.year}</span>
+            </div>
+            <span className={styles.movieRating}>{movie.rating}</span>
+          </a>
+        ))}
+      </div>
+
+      <div className={styles.cardFooter}>
+        <a
+          href={movies.profileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-secondary"
+          style={{ textDecoration: "none", width: "100%" }}
+        >
+          View Letterboxd Profile &rarr;
         </a>
       </div>
     </section>
