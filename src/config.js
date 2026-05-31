@@ -62,5 +62,29 @@ export const siteConfig = {
         },
       ],
     },
+
+    // Paragliding details
+    paragliding: {
+      imagePath: "/paragliding.jpg",
+      title: "Paragliding",
+      badge: "Adventure",
+      description: "A past chapter of exploring the skies from above. Currently grounded, but always fond of the view and the wind.",
+    },
+
+    // Soccer details
+    soccer: {
+      imagePath: "/soccer.jpg",
+      title: "Soccer",
+      badge: "Athletics",
+      description: "Played active soccer for many years. Now retired from the field, but still a passionate observer of the beautiful game.",
+    },
+
+    // Camping details
+    camping: {
+      imagePath: "/camping.jpg",
+      title: "Camping",
+      badge: "Outdoors",
+      description: "Hiking deep into the wilderness, setting up camp, and unplugging from the grid to appreciate nature's quiet structures.",
+    },
   },
 };

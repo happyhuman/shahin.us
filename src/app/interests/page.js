@@ -16,10 +16,29 @@ export default function InterestsPage() {
 
       <div className={styles.interestsGrid}>
         {/* Chess Card */}
-        <ChessCard />
+        <div className={styles.singleSpan}>
+          <ChessCard />
+        </div>
 
         {/* Movies Card */}
-        <MoviesCard />
+        <div className={styles.singleSpan}>
+          <MoviesCard />
+        </div>
+
+        {/* Paragliding Card */}
+        <div className={styles.singleSpan}>
+          <ImageCard config={siteConfig.interests.paragliding} />
+        </div>
+
+        {/* Soccer Card */}
+        <div className={styles.doubleSpan}>
+          <ImageCard config={siteConfig.interests.soccer} isLandscape={true} />
+        </div>
+
+        {/* Camping Card */}
+        <div className={styles.doubleSpan}>
+          <ImageCard config={siteConfig.interests.camping} isLandscape={true} />
+        </div>
       </div>
     </div>
   );
@@ -225,6 +244,54 @@ function MoviesCard() {
           View Letterboxd Profile &rarr;
         </a>
       </div>
+    </section>
+  );
+}
+
+function ImageCard({ config, isLandscape = false }) {
+  if (isLandscape) {
+    return (
+      <section className={`card ${styles.imageCard}`} style={{ height: "100%", padding: "20px" }}>
+        <div className={styles.landscapeLayout}>
+          <div className={styles.imageWrapper}>
+            <img 
+              src={config.imagePath} 
+              alt={config.title} 
+              className={styles.cardImg} 
+            />
+          </div>
+          <div className={styles.landscapeLayoutContent}>
+            <div className={styles.cardHeader} style={{ marginBottom: "8px" }}>
+              <h3 className={styles.cardHeading}>{config.title}</h3>
+              <span className={styles.cardBadge}>{config.badge}</span>
+            </div>
+            <p className={styles.chessDescription} style={{ margin: 0 }}>
+              {config.description}
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className={`card ${styles.imageCard}`} style={{ height: "100%" }}>
+      <div className={styles.cardHeader}>
+        <h3 className={styles.cardHeading}>{config.title}</h3>
+        <span className={styles.cardBadge}>{config.badge}</span>
+      </div>
+
+      <div className={`${styles.imageWrapper} ${styles.verticalImage}`}>
+        <img 
+          src={config.imagePath} 
+          alt={config.title} 
+          className={styles.cardImg} 
+        />
+      </div>
+
+      <p className={styles.chessDescription} style={{ margin: 0 }}>
+        {config.description}
+      </p>
     </section>
   );
 }

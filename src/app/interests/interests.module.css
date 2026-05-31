@@ -18,13 +18,42 @@
   line-height: 1.5;
 }
 
-/* Interests Bento Grid */
+/* Interests Bento Grid - 6 Column System for Bento spacing */
 .interestsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: 24px;
   margin-top: 32px;
   align-items: stretch;
+}
+
+.singleSpan {
+  grid-column: span 2;
+}
+
+.doubleSpan {
+  grid-column: span 3;
+}
+
+@media (max-width: 992px) {
+  .interestsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .singleSpan {
+    grid-column: span 2;
+  }
+  .doubleSpan {
+    grid-column: span 4;
+  }
+}
+
+@media (max-width: 768px) {
+  .interestsGrid {
+    grid-template-columns: 1fr;
+  }
+  .singleSpan, .doubleSpan {
+    grid-column: span 1;
+  }
 }
 
 /* Chess Card Specific Styles */
@@ -312,4 +341,75 @@
   padding: 2px 8px;
   border-radius: 4px;
   border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+/* Image Card Styles (Paragliding, Soccer, Camping) */
+.imageCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  gap: 16px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+}
+
+.verticalImage {
+  aspect-ratio: 16 / 11;
+}
+
+.landscapeImage {
+  aspect-ratio: 16 / 10;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.imageCard:hover .cardImg {
+  transform: scale(1.03);
+}
+
+/* Landscape / Wide layout styling for double-span cards */
+.landscapeLayout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 20px;
+  align-items: center;
+  height: 100%;
+}
+
+.landscapeLayout .imageWrapper {
+  margin: 0;
+  height: 100%;
+  display: flex;
+}
+
+.landscapeLayout .cardImg {
+  height: 100%;
+}
+
+.landscapeLayoutContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .landscapeLayout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
