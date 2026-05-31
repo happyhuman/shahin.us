@@ -182,32 +182,13 @@ function MoviesCard() {
         <span className={styles.cardBadge}>Cinema</span>
       </div>
 
-      <p className={styles.chessDescription}>
-        A lifelong appreciation for cinema and visual storytelling. I track my viewing log and curate playlists of my favorite films on Letterboxd.
+      <p className={styles.chessDescription} style={{ marginBottom: "20px" }}>
+        {movies.description}
       </p>
 
-      <div className={styles.moviesStatsBanner}>
+      <div className={styles.moviesStatsBanner} style={{ marginTop: "auto", marginBottom: "20px" }}>
         <span className={styles.moviesStatsText}>Films Logged</span>
         <span className={styles.moviesStatsCount}>{movies.totalWatched}</span>
-      </div>
-
-      <div className={styles.moviesList}>
-        {movies.favorites.map((movie, idx) => (
-          <a
-            key={idx}
-            href={movie.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.movieItem}
-            title="View on Letterboxd"
-          >
-            <div className={styles.movieInfo}>
-              <span className={styles.movieTitle}>{movie.title}</span>
-              <span className={styles.movieYear}>{movie.year}</span>
-            </div>
-            <span className={styles.movieRating}>{movie.rating}</span>
-          </a>
-        ))}
       </div>
 
       <div className={styles.cardFooter}>

@@ -27,36 +27,8 @@ export const siteConfig = {
     // Letterboxd details
     movies: {
       profileUrl: "https://letterboxd.com/happyhuman/",
-      favoritesUrl: "https://letterboxd.com/happyhuman/list/my-absolute-favorites/",
-      totalWatched: "1,400+",
-      // A curated list of your absolute favorite movies (10/10 ratings)
-      // Feel free to replace these placeholder titles, years, and links
-      favorites: [
-        {
-          title: "Inception",
-          year: "2010",
-          rating: "10/10",
-          link: "https://letterboxd.com/film/inception/",
-        },
-        {
-          title: "Interstellar",
-          year: "2014",
-          rating: "10/10",
-          link: "https://letterboxd.com/film/interstellar/",
-        },
-        {
-          title: "The Matrix",
-          year: "1999",
-          rating: "10/10",
-          link: "https://letterboxd.com/film/the-matrix/",
-        },
-        {
-          title: "Pulp Fiction",
-          year: "1994",
-          rating: "10/10",
-          link: "https://letterboxd.com/film/pulp-fiction/",
-        },
-      ],
+      totalWatched: "1,300+",
+      description: "A lifelong appreciation for cinema and visual storytelling across all genres. I track my viewing log and ratings on Letterboxd.",
     },
   },
 };
