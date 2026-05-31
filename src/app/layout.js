@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
         <header className="header">
           <div className="container nav-container">
             <Link href="/" className="logo">
-              shahin.us<span className="logo-dot"></span>
+              shahin.us
             </Link>
             <nav>
               <ul className="nav-links">
