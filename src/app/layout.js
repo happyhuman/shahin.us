@@ -44,8 +44,13 @@ export default function RootLayout({ children }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/projects" className="nav-link">
-                    Projects
+                  <Link href="/software" className="nav-link">
+                    Software
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/math" className="nav-link">
+                    Math
                   </Link>
                 </li>
               </ul>

@@ -1,62 +1,26 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import styles from "./projects.module.css";
+import React, { useState, useEffect } from "react";
+import styles from "./math.module.css";
 
-export default function ProjectsPage() {
+export default function MathPage() {
   return (
     <div>
       <div className={styles.pageHeader}>
-        <h1 className={styles.pageTitle}>Projects & Explorations</h1>
+        <h1 className={styles.pageTitle}>Mathematical Explorations</h1>
         <p className={styles.pageSubtitle}>
-          A showcase of my software applications and mathematical investigations.
+          Interactive visualizations and investigations in number theory and discrete structures.
         </p>
       </div>
 
-      {/* SECTION 1: Software Applications */}
-      <h2 style={{ fontSize: "1.8rem", margin: "40px 0 20px 0", borderBottom: "1px solid var(--border-color)", paddingBottom: "8px" }}>
-        💻 Software Applications
-      </h2>
-      <div className={styles.projectsList} style={{ marginBottom: "60px" }}>
-        <section className="card">
-          <div className={styles.projectHeader}>
-            <div>
-              <h3 className={styles.projectHeading} style={{ fontSize: "1.4rem" }}>
-                The Truly Free QR Generator
-              </h3>
-              <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", marginTop: "4px" }}>
-                No hidden subscriptions, no ads, and no expiring links—just high-quality QR codes that work forever.
-              </p>
-            </div>
-            <span className={styles.projectBadge}>Web App</span>
-          </div>
-
-          <p style={{ margin: "16px 0", fontSize: "0.95rem", lineHeight: "1.6", color: "var(--text-secondary)" }}>
-            A lightweight, privacy-focused utility tool designed to help users generate secure, high-resolution QR codes for URLs, text, Wi-Fi passwords, and contact info. Free from the dark patterns of commercial generators.
-          </p>
-
-          <a 
-            href="https://myfreeqr.app" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn btn-primary"
-            style={{ textDecoration: "none" }}
-          >
-            Visit myfreeqr.app &rarr;
-          </a>
-        </section>
-      </div>
-
-      {/* SECTION 2: Mathematical Explorations */}
-      <h2 style={{ fontSize: "1.8rem", margin: "40px 0 20px 0", borderBottom: "1px solid var(--border-color)", paddingBottom: "8px" }}>
-        📐 Mathematical Explorations
-      </h2>
       <div className={styles.projectsList}>
         {/* OEIS A394209 Sequence Visualizer */}
         <section className="card" id="oeis-sequence">
           <div className={styles.projectHeader}>
             <div>
-              <h3 className={styles.projectHeading} style={{ fontSize: "1.4rem" }}>OEIS A394209: Prime Interval Count</h3>
+              <h3 className={styles.projectHeading} style={{ fontSize: "1.4rem" }}>
+                OEIS A394209: Prime Interval Count
+              </h3>
               <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", marginTop: "4px" }}>
                 A custom integer sequence counting primes in half-open ternary intervals.
               </p>
@@ -65,8 +29,7 @@ export default function ProjectsPage() {
           </div>
 
           <p style={{ fontSize: "0.95rem", lineHeight: "1.6", color: "var(--text-secondary)", marginBottom: "16px" }}>
-            The <em>n</em>-th term is defined as the number of primes in the half-open interval [3<sup><em>n</em>-1</sup>, 3<sup><em>n</em></sup>) for <em>n</em> &gt; 0.
-            This sequence has been registered in the <strong>OEIS (Online Encyclopedia of Integer Sequences)</strong>.
+            The <em>n</em>-th term is defined as the number of primes in the half-open interval <strong>{"[3^(n-1), 3^n)"}</strong> for <em>n</em> &gt; 0. This sequence has been registered in the <strong>OEIS (Online Encyclopedia of Integer Sequences)</strong>.
           </p>
 
           <OeisSequenceVisualizer />
@@ -75,8 +38,6 @@ export default function ProjectsPage() {
     </div>
   );
 }
-
-
 
 /* OEIS A394209 Sequence Visualizer */
 function OeisSequenceVisualizer() {
@@ -141,7 +102,7 @@ function OeisSequenceVisualizer() {
     <div className={styles.canvasWrapper} style={{ alignItems: "stretch" }}>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "24px", justifyContent: "space-between" }}>
         
-        {/* Left Side: Controls & Details - Stabilized width with minWidth and flex-basis */}
+        {/* Left Side: Controls & Details */}
         <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: "16px", minWidth: "280px" }}>
           <div className={styles.rangeSliderRow}>
             <div className={styles.sliderHeader}>
@@ -173,7 +134,7 @@ function OeisSequenceVisualizer() {
           </a>
         </div>
 
-        {/* Right Side: Growth Chart - Stabilized width with minWidth */}
+        {/* Right Side: Growth Chart */}
         <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: "8px", minWidth: "280px" }}>
           <span style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text-secondary)" }}>Growth log-scale (bars represent log10 of counts):</span>
           
@@ -213,7 +174,7 @@ function OeisSequenceVisualizer() {
 
       </div>
 
-      {/* Primes list display - Fixed height and opacity-fade calculation state to prevent layout jumps */}
+      {/* Primes list display */}
       <div style={{ marginTop: "16px", borderTop: "1px dashed var(--border-color)", paddingTop: "12px" }}>
         <div style={{ fontSize: "0.85rem", fontWeight: "700", color: "var(--text-secondary)", marginBottom: "8px", height: "16px" }}>
           Primes in [{lowerBound.toLocaleString()}, {upperBound.toLocaleString()}) {totalPrimes > 200 ? "(showing first 200)" : ""}: {loading ? "Computing..." : ""}
