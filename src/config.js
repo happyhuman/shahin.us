@@ -29,6 +29,38 @@ export const siteConfig = {
       profileUrl: "https://letterboxd.com/happyhuman/",
       totalWatched: "1,300+",
       description: "A lifelong appreciation for cinema and visual storytelling across all genres. I track my viewing log and ratings on Letterboxd.",
+      favorites: [
+        {
+          title: "Schindler's List",
+          year: "1993",
+          rating: "10/10",
+          link: "https://letterboxd.com/film/schindlers-list/",
+        },
+        {
+          title: "Cinema Paradiso",
+          year: "1988",
+          rating: "10/10",
+          link: "https://letterboxd.com/film/cinema-paradiso/",
+        },
+        {
+          title: "The Color of Paradise",
+          year: "1999",
+          rating: "10/10",
+          link: "https://letterboxd.com/film/the-color-of-paradise/",
+        },
+        {
+          title: "Terminator 2: Judgment Day",
+          year: "1991",
+          rating: "10/10",
+          link: "https://letterboxd.com/film/terminator-2-judgment-day/",
+        },
+        {
+          title: "The Exorcist",
+          year: "1973",
+          rating: "10/10",
+          link: "https://letterboxd.com/film/the-exorcist/",
+        },
+      ],
     },
   },
 };

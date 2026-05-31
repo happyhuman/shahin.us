@@ -182,13 +182,36 @@ function MoviesCard() {
         <span className={styles.cardBadge}>Cinema</span>
       </div>
 
-      <p className={styles.chessDescription} style={{ marginBottom: "20px" }}>
+      <p className={styles.chessDescription} style={{ marginBottom: "16px" }}>
         {movies.description}
       </p>
 
-      <div className={styles.moviesStatsBanner} style={{ marginTop: "auto", marginBottom: "20px" }}>
+      <div className={styles.moviesStatsBanner} style={{ marginBottom: "16px" }}>
         <span className={styles.moviesStatsText}>Films Logged</span>
         <span className={styles.moviesStatsCount}>{movies.totalWatched}</span>
+      </div>
+
+      <div style={{ fontSize: "0.75rem", fontWeight: "700", color: "var(--text-secondary)", marginBottom: "8px", zIndex: 2, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+        Absolute Favorites (a few examples):
+      </div>
+
+      <div className={styles.moviesList}>
+        {movies.favorites && movies.favorites.map((movie, idx) => (
+          <a
+            key={idx}
+            href={movie.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.movieItem}
+            title="View on Letterboxd"
+          >
+            <div className={styles.movieInfo}>
+              <span className={styles.movieTitle}>{movie.title}</span>
+              <span className={styles.movieYear}>{movie.year}</span>
+            </div>
+            <span className={styles.movieRating}>{movie.rating}</span>
+          </a>
+        ))}
       </div>
 
       <div className={styles.cardFooter}>
