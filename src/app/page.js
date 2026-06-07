@@ -17,6 +17,9 @@ export default function Home() {
               className={styles.profileImg} 
             />
           </div>
+          <h1 className={styles.profileName}>
+            Shahin <span className="sr-only">Saadati</span>
+          </h1>
           <p className={styles.profileTagline}>{siteConfig.profileTagline}</p>
         </div>
 

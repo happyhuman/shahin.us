@@ -12,11 +12,40 @@ const outfit = Outfit({
 export const metadata = {
   title: "Shahin | Personal Website",
   description: "Explore my interactive projects, applications, mathematical visualizations, and personal portfolio.",
+  authors: [{ name: "Shahin Saadati" }],
+  openGraph: {
+    title: "Shahin Saadati | Personal Website",
+    description: "Explore my interactive projects, applications, mathematical visualizations, and personal portfolio.",
+    url: "https://shahin.us",
+    siteName: "Shahin | Personal Website",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shahin Saadati",
+  "givenName": "Shahin",
+  "familyName": "Saadati",
+  "jobTitle": "Software Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Google",
+  },
+  "alumniOf": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "UC Berkeley",
+    },
+  ],
+  "url": "https://shahin.us",
 };
 
 export default function RootLayout({ children }) {
@@ -28,6 +57,12 @@ export default function RootLayout({ children }) {
       data-background="mesh"
     >
       <body>
+        {/* JSON-LD Structured Data for Search Engine Optimization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         {/* Decorative dynamic background mesh/grid wrapper */}
         <div className="app-bg-wrapper"></div>
 
