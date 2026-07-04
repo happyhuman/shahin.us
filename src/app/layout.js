@@ -3,6 +3,7 @@ import "./globals.css";
 import Link from "next/link";
 import { siteConfig } from "@/config";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -121,6 +122,7 @@ export default function RootLayout({ children }) {
         <main className="main-content">
           <div className="container">{children}</div>
         </main>
+        <Analytics />
       </body>
     </html>
   );
