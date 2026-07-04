@@ -2,6 +2,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { siteConfig } from "@/config";
+import Script from "next/script";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -61,6 +62,25 @@ export default function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
+        {/* MathJax Configuration and Script */}
+        <Script id="mathjax-config" strategy="beforeInteractive">
+          {`
+            window.MathJax = {
+              tex: {
+                inlineMath: [['\\\\(', '\\\\)']],
+                displayMath: [['\\\\[', '\\\\]']]
+              },
+              options: {
+                enableMenu: false
+              }
+            };
+          `}
+        </Script>
+        <Script
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+          strategy="lazyOnload"
         />
 
         {/* Decorative dynamic background mesh/grid wrapper */}
